@@ -29,13 +29,13 @@ jobs:
           cat docker_config_ci.yml | envsubst > deploy/docker_config.yml
       - name: copy files to server
         uses: appleboy/scp-action@master
-          with:
-            host: ${{ secrets.HOST }}
-            username: ${{ secrets.USERNAME }}
-            password: ${{ secrets.PASSWORD }}
-            source: "deploy/docker-compose.yml,deploy/docker_config.yml"
-            target: "flask_app_ci"
-            strip_components: 1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          source: "deploy/docker-compose.yml,deploy/docker_config.yml"
+          target: "flask_app_ci"
+          strip_components: 1
       - name: deploy app
           uses: appleboy/ssh-action@master
           with:
