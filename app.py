@@ -25,7 +25,7 @@ def index():
     response = {
         "total": len(users),
         "users": [{"username": user.username} for user in users],
-        "age": "test",
+        "age": "33",
     }
     return jsonify(response)
 
