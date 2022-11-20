@@ -36,7 +36,7 @@ jobs:
           source: "deploy/docker-compose.yml,deploy/docker_config.yml"
           target: "flask_app_ci"
           strip_components: 1
-      - name: deploy app
+      - name: app to server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
