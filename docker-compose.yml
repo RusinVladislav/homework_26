@@ -8,7 +8,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./docker_config.py:/code
+      - ./docker_config.py:/deploy/default_config.py
     depends_on:
       pg:
         condition: service_healthy
@@ -19,7 +19,7 @@ services:
       context: .
     image: swat88/skypro_vrusin_app
     volumes:
-      - ./docker_config.py:/code
+      - ./docker_config.py:/deploy/default_config.py
     depends_on:
       pg:
         condition: service_healthy
@@ -27,9 +27,9 @@ services:
   pg:
     image: postgres:latest
     environment:
-      POSTGRES_USER: flask_app
-      POSTGRES_PASSWORD: flask_app_password
-      POSTGRES_DB: flask_app
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_DB: $DB_NAME
     volumes:
       - ./pg_data:/var/lib/postgresql/data
     healthcheck:
